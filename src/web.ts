@@ -9,9 +9,23 @@ export class AppRateWeb extends WebPlugin implements AppRatePlugin {
     });
   }
 
-  async echo(options: { value: string }): Promise<{value: string}> {
-    console.log('ECHO', options);
-    return options;
+  async setConfig(options: {
+    usesUntilPrompt?: number;
+    iosId?: string;
+    androidId?: string;
+  }): Promise<void> {
+    console.log('openAppstore', options);
+    return;
+  }
+
+  async navigateToAppStore(): Promise<void> {
+    console.log('navigateToAppStore');
+    return;
+  }
+
+  async promptForRating(options: { force?: boolean }): Promise<void> {
+    console.log('promptForRating', options);
+    return;
   }
 }
 

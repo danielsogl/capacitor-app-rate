@@ -1,9 +1,15 @@
-declare module "@capacitor/core" {
+declare module '@capacitor/core' {
   interface PluginRegistry {
     AppRate: AppRatePlugin;
   }
 }
 
 export interface AppRatePlugin {
-  echo(options: { value: string }): Promise<{value: string}>;
+  setConfig(options: {
+    usesUntilPrompt?: number;
+    iosId?: string;
+    androidId?: string;
+  }): Promise<void>;
+  navigateToAppStore(): Promise<void>;
+  promptForRating(options: { force?: boolean }): Promise<void>;
 }

@@ -1,6 +1,6 @@
 {
   "name": "capacitor-app-rate",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "The AppRate plugin makes it easy to prompt the user to rate your app, either now, later, or never.",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
