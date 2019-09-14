@@ -7,4 +7,4 @@ CAP_PLUGIN(AppRate, "AppRate",
            CAP_PLUGIN_METHOD(setConfig, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(navigateToAppStore, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(promptForRating, CAPPluginReturnPromise);
-)
+           )

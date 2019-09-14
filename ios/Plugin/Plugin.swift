@@ -38,9 +38,9 @@ public class AppRate: CAPPlugin {
                 SKStoreReviewController.requestReview()
             }
         } else {
-            var count = UserDefaults.standard.integer(forKey: "AppRate.processCompletedCountKey")
+            var count = UserDefaults.standard.integer(forKey: "processCompletedCountKey")
             count += 1
-            UserDefaults.standard.set(count, forKey: "AppRate.processCompletedCountKey")
+            UserDefaults.standard.set(count, forKey: "processCompletedCountKey")
             
             // Get the current bundle version for the app
             let infoDictionaryKey = kCFBundleVersionKey as String
@@ -50,15 +50,13 @@ public class AppRate: CAPPlugin {
                     fatalError("Expected to find a bundle version in the info dictionary")
             }
             
-            let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: "AppRate.lastVersionPromptedForReviewKey")
+            let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: "lastVersionPromptedForReviewKey")
             
             // Has the process been completed several times and the user has not already been prompted for this version?
             if count >= usesUntilPrompt && currentVersion != lastVersionPromptedForReview {
-                let twoSecondsFromNow = DispatchTime.now() + 2.0
-                
-                DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow) {
+                DispatchQueue.main.async() {
                     SKStoreReviewController.requestReview()
-                    UserDefaults.standard.set(currentVersion, forKey: "AppRate.lastVersionPromptedForReviewKey")
+                    UserDefaults.standard.set(currentVersion, forKey: "lastVersionPromptedForReviewKey")
                 }
             }
         }
